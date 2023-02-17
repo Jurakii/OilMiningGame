@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public float truckSpeed;
     public float truckCapacity; // How much each truck can carry
     public float stationTimes; // How log it takes to load/unload the trucks
+    
 
     [Header("Refinery")]
     public float refineryInv;
