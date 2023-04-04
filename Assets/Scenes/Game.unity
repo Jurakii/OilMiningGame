@@ -794,12 +794,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fdee22e9461d948a3b5ecb6144748d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miningSpeed: 10
+  miningSpeed: 1
   miningAmount: 0
   trucks: 1
-  truckTravelTime: 60
-  truckCapacity: 1
-  loadTime: 60
+  truckTravelTime: 15
+  truckCapacity: 5
+  loadTime: 10
   truckCost: 50
   truckCostText: {fileID: 1840712087}
   truckButton: {fileID: 128154839}
@@ -807,7 +807,7 @@ MonoBehaviour:
   refineryText: {fileID: 508133058}
   refinedOil: 0
   refinedText: {fileID: 565171098}
-  refineSpeed: 60
+  refineSpeed: 5
   refining: 0
   oilText: {fileID: 1582712368}
   oil: 0
@@ -818,8 +818,9 @@ MonoBehaviour:
   sell: {fileID: 1899720394}
   i: 0
   multi: 1
-  upgradeCost: 0
-  upgradeText: {fileID: 0}
+  upgradeCost: 15
+  upgradeText: {fileID: 176932362}
+  upgradeButton: {fileID: 1379965537}
 --- !u!1 &240536764
 GameObject:
   m_ObjectHideFlags: 0

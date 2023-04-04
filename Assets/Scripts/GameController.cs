@@ -43,11 +43,17 @@ public class GameController : MonoBehaviour
     public float multi = 1f;
     public float upgradeCost = 0f; //Upgrades sell price, and speed
     public TextMeshProUGUI upgradeText;
-
+    public Button upgradeButton;
     // Start is called before the first frame update
     void Start()
     {
+        upgradeText.text = "$"+upgradeCost;
         cashText.text = "$"+cash;
+        if(cash >= upgradeCost){
+            upgradeButton.interactable = true;
+        } else {
+            upgradeButton.interactable = false;
+        }
         if(cash >= truckCost) {
             truckButton.interactable = true;
             truckCostText.text = "$" + truckCost;
@@ -59,6 +65,7 @@ public class GameController : MonoBehaviour
          slider.onValueChanged.AddListener(delegate {sliderUpdate(); });
     }
     IEnumerator GameStart() {
+        yield return new WaitForSeconds(5);
         for(i = 0; i < trucks; i++) {
             StartCoroutine(Truck(i + 1));
             yield return new WaitForSeconds(1);
@@ -139,6 +146,11 @@ public class GameController : MonoBehaviour
             } else {
                 truckButton.interactable = false;
             }
+            if(cash >= upgradeCost) {
+                upgradeButton.interactable = true;
+            } else {
+                upgradeButton.interactable = false;
+            }
         }
     }
     public void buyTruck() {
@@ -160,15 +172,19 @@ public class GameController : MonoBehaviour
     }
     public void upgrade() {
         if(cash >= upgradeCost) {
+            cash -= upgradeCost;
+            cashText.text = "$"+cash;
             upgradeCost = calculateUpgrade();
+            upgradeText.text = "$" + upgradeCost;
             multi += 0.5f;
+            truckTravelTime -= truckTravelTime * 0.25f;
+            refineSpeed -= refineSpeed * 0.25f;
         }
     }
 
     public float calculateUpgrade() {
         return Mathf.Round(upgradeCost*1.25f);
-    }
-    //public void 
+    } 
     public float calculateTruckPrice(){
         return Mathf.Round(truckCost*1.25f);
     }
