@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI refinedText;
     public float refineSpeed;
     public bool refining = false;
+    public float refineryCapacity;
 
     [Header("Player")]
     public TextMeshProUGUI oilText;
@@ -44,6 +45,7 @@ public class GameController : MonoBehaviour
     public float upgradeCost = 0f; //Upgrades sell price, and speed
     public TextMeshProUGUI upgradeText;
     public Button upgradeButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -112,18 +114,28 @@ public class GameController : MonoBehaviour
     {
         oil += miningSpeed * Time.deltaTime;
         oilText.text = "Crude Oil: " + Mathf.Round(oil);
-        if(!refining) {
-            if(refineryInv > 0) {
-                refining = true;
-                StartCoroutine(refine());
+            if(!refining) {
+                if(refineryInv >= refineryCapacity) {
+                    refining = true;
+                    StartCoroutine(refine());
+                }
             }
-        }
     }
     IEnumerator refine() {
         yield return new WaitForSeconds(refineSpeed);
-        refineryInv -= 1;
+        if(refineryInv >= refineryCapacity) {
+            refineryInv -= refineryCapacity;
+            refinedOil += refineryCapacity;
+        } else {
+            refinedOil += refineryCapacity;
+            refineryInv = 0;
+            
+        }
+        refineryInv = Mathf.Round(refineryInv);
+        refinedOil = Mathf.Round(refinedOil);
+
         refineryText.text = "Refinery Oil: " + refineryInv;
-        refinedOil += 1;
+        
         refinedText.text = "Refined Oil: " + refinedOil;
         refining = false;
         slider.maxValue = refinedOil;
@@ -168,27 +180,58 @@ public class GameController : MonoBehaviour
                 truckButton.interactable = false;
                 truckCostText.text = "$" + truckCost;
             }
+                        if(cash < upgradeCost) {
+                upgradeButton.interactable = false;
+            }
         }
     }
     public void upgrade() {
         if(cash >= upgradeCost) {
             cash -= upgradeCost;
+
             cashText.text = "$"+cash;
             upgradeCost = calculateUpgrade();
             upgradeText.text = "$" + upgradeCost;
             multi += 0.5f;
-            truckTravelTime -= truckTravelTime * 0.25f;
-            refineSpeed -= refineSpeed * 0.25f;
+            if(truckTravelTime > 0.25f) {
+                truckTravelTime -= 0.25f;
+            } else {
+                truckTravelTime = 0.25f;
+            }
+            if(refineSpeed > 0.25f) {
+                refineSpeed -= 0.25f;
+            } else {
+                refineSpeed = 0.25f;
+            }
+            if(loadTime > 0.05f) {
+                loadTime -= 0.05f;
+            }else {
+                loadTime = 0.05f;
+            }
+
+            truckCapacity += 2;
+            miningSpeed += 1;
+            refineryCapacity += 2;
+            if(cash < upgradeCost) {
+                upgradeButton.interactable = false;
+            }
+            if(cash >= truckCost) {
+                truckButton.interactable = true;   
+                truckCostText.text = "$" + truckCost;
+            } else {
+                truckButton.interactable = false;
+                truckCostText.text = "$" + truckCost;
+            }
         }
     }
 
     public float calculateUpgrade() {
-        return Mathf.Round(upgradeCost*1.25f);
+        return Mathf.Round(upgradeCost*1.2f);
     } 
     public float calculateTruckPrice(){
-        return Mathf.Round(truckCost*1.25f);
+        return Mathf.Round(truckCost*1.2f);
     }
     public float calculatePrice() {
-        return Mathf.Round((slider.value * 2 + (slider.value / 2) )* 1);
+        return Mathf.Round((slider.value)* multi);
     }
 }

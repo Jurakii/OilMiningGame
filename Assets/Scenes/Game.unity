@@ -797,9 +797,9 @@ MonoBehaviour:
   miningSpeed: 1
   miningAmount: 0
   trucks: 1
-  truckTravelTime: 15
+  truckTravelTime: 10
   truckCapacity: 5
-  loadTime: 10
+  loadTime: 5
   truckCost: 50
   truckCostText: {fileID: 1840712087}
   truckButton: {fileID: 128154839}
@@ -809,6 +809,7 @@ MonoBehaviour:
   refinedText: {fileID: 565171098}
   refineSpeed: 5
   refining: 0
+  refineryCapacity: 1
   oilText: {fileID: 1582712368}
   oil: 0
   cashText: {fileID: 1847230264}
@@ -818,7 +819,7 @@ MonoBehaviour:
   sell: {fileID: 1899720394}
   i: 0
   multi: 1
-  upgradeCost: 15
+  upgradeCost: 5
   upgradeText: {fileID: 176932362}
   upgradeButton: {fileID: 1379965537}
 --- !u!1 &240536764
@@ -6710,6 +6711,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1379965540}
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 230778858}
+        m_MethodName: upgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
