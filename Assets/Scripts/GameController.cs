@@ -15,6 +15,9 @@ public class GameController : MonoBehaviour
     public float truckTravelTime; //Truck speed
     public float truckCapacity; //Truck capacity
     public float loadTime; //Truck load/offload speed
+    public float truckCost; //Cost of truck
+    public TextMeshProUGUI truckCostText;
+    public Button truckButton; //Button for truck
 
     [Header("Refinery")]
     public float refineryInv; //How much is in refinery
@@ -28,22 +31,35 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI oilText;
     public float oil; //Player Oil count
     public TextMeshProUGUI cashText;
-    public int cash; //Player cash
+    public float cash; //Player cash
 
     public Slider slider;
-
+    public TextMeshProUGUI sellPriceText;
+    public Button sell;
+    public int i = 0;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        cashText.text = "$"+cash;
+        if(cash >= truckCost) {
+            truckButton.interactable = true;
+            truckCostText.text = "$" + truckCost;
+        } else {
+            truckButton.interactable = false;
+            truckCostText.text = "$" + truckCost;
+        }
         StartCoroutine(GameStart());
+         slider.onValueChanged.AddListener(delegate {sliderUpdate(); });
     }
     IEnumerator GameStart() {
-        for(int i = 0; i < trucks; i++) {
+        for(i = 0; i < trucks; i++) {
             StartCoroutine(Truck(i + 1));
             yield return new WaitForSeconds(1);
+            Debug.Log(i);
         }
+        Debug.Log(i);
     }
 
     IEnumerator Truck(int num) {
@@ -99,5 +115,50 @@ public class GameController : MonoBehaviour
         refinedText.text = "Refined Oil: " + refinedOil;
         refining = false;
         slider.maxValue = refinedOil;
+    }
+    public void sliderUpdate(){
+        sellPriceText.text = slider.value + "→$" + calculatePrice();
+    }
+    public void buttonSold() {
+        //Debug.Log("Sold");
+        if(slider.value > 0){
+            cash += calculatePrice();
+            cashText.text = "$"+cash;
+            refinedOil -= slider.value;
+            slider.value = 0;
+            slider.maxValue = refinedOil;
+            refinedText.text = "Refined Oil: " + refinedOil;
+            sellPriceText.text = slider.value + "→$" + calculatePrice();
+            if(cash >= truckCost) {
+                truckButton.interactable = true;
+            } else {
+                truckButton.interactable = false;
+            }
+        }
+    }
+    public void buyTruck() {
+        if(cash >= truckCost) {
+            cash -= truckCost;
+            trucks += 1;
+            i += 1;
+            StartCoroutine(Truck(i));
+            truckCost = calculateTruckPrice();
+            cashText.text = "$"+cash;
+            if(cash >= truckCost) {
+                truckButton.interactable = true;   
+                truckCostText.text = "$" + truckCost;
+            } else {
+                truckButton.interactable = false;
+                truckCostText.text = "$" + truckCost;
+            }
+        }
+    }
+
+    //public void 
+    public float calculateTruckPrice(){
+        return Mathf.Round(truckCost*1.25f);
+    }
+    public float calculatePrice() {
+        return Mathf.Round((slider.value * 2 + (slider.value / 2) )* 1);
     }
 }
