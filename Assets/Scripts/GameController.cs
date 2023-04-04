@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -38,6 +39,10 @@ public class GameController : MonoBehaviour
     public Button sell;
     public int i = 0;
 
+    [Header("Upgrades")]
+    public float multi = 1f;
+    public float upgradeCost = 0f; //Upgrades sell price, and speed
+    public TextMeshProUGUI upgradeText;
 
     // Start is called before the first frame update
     void Start()
@@ -153,7 +158,16 @@ public class GameController : MonoBehaviour
             }
         }
     }
+    public void upgrade() {
+        if(cash >= upgradeCost) {
+            upgradeCost = calculateUpgrade();
+            multi += 0.5f;
+        }
+    }
 
+    public float calculateUpgrade() {
+        return Mathf.Round(upgradeCost*1.25f);
+    }
     //public void 
     public float calculateTruckPrice(){
         return Mathf.Round(truckCost*1.25f);
