@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     public float truckCost; //Cost of truck
     public TextMeshProUGUI truckCostText;
     public Button truckButton; //Button for truck
+    public TextMeshProUGUI truckText;
 
     [Header("Refinery")]
     public float refineryInv; //How much is in refinery
@@ -49,6 +50,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        truckText.text = "" + trucks;
         upgradeText.text = "$"+upgradeCost;
         cashText.text = "$"+cash;
         if(cash >= upgradeCost){
@@ -169,6 +171,7 @@ public class GameController : MonoBehaviour
         if(cash >= truckCost) {
             cash -= truckCost;
             trucks += 1;
+            truckText.text = ""+trucks;
             i += 1;
             StartCoroutine(Truck(i));
             truckCost = calculateTruckPrice();
