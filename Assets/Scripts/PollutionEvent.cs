@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Video;
 
 public class PollutionEvent : MonoBehaviour {
     [System.Serializable]
@@ -16,6 +17,10 @@ public class PollutionEvent : MonoBehaviour {
 
     // Reference to the script containing the pollution level variable
     public GameController gameController;
+    
+    public Camera mainCamera;
+    public Color sky1;
+
 
     void Update() {
         // Access the pollution level variable through the reference to the other script
@@ -26,5 +31,10 @@ public class PollutionEvent : MonoBehaviour {
                 item.onPollutionLevelReached.Invoke();
             }
         }
+    }
+
+
+    public void swapSky1() {
+        mainCamera.backgroundColor = sky1;
     }
 }

@@ -1,5 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class OpacityController : MonoBehaviour
 {
@@ -9,6 +13,9 @@ public class OpacityController : MonoBehaviour
 
     private float currentOpacity = 0f;
     private float timeElapsed = 0f;
+    public VideoPlayer videoPlayer;
+    public GameObject videoObj;
+    public int videoLength;
 
     private void Start()
     {
@@ -31,6 +38,14 @@ public class OpacityController : MonoBehaviour
         if (currentOpacity >= maxOpacity)
         {
             enabled = false;
+            StartCoroutine(Disable());
         }
+    }
+    IEnumerator Disable() {
+
+        yield return new WaitForSeconds(videoLength);
+        videoPlayer.Pause();
+        videoObj.SetActive(false);
+        
     }
 }

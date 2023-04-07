@@ -230,6 +230,7 @@ public class GameController : MonoBehaviour
             }
         }
     }
+    
 
     public float calculateUpgrade() {
         return Mathf.Round(upgradeCost*1.2f);
