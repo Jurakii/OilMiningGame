@@ -40,12 +40,14 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI sellPriceText;
     public Button sell;
     public int i = 0;
+    public float pollution = 0;
 
     [Header("Upgrades")]
     public float multi = 1f;
     public float upgradeCost = 0f; //Upgrades sell price, and speed
     public TextMeshProUGUI upgradeText;
     public Button upgradeButton;
+
 
     // Start is called before the first frame update
     void Start()
@@ -169,6 +171,7 @@ public class GameController : MonoBehaviour
     }
     public void buyTruck() {
         if(cash >= truckCost) {
+            pollution += 1;
             cash -= truckCost;
             trucks += 1;
             truckText.text = ""+trucks;
@@ -191,7 +194,7 @@ public class GameController : MonoBehaviour
     public void upgrade() {
         if(cash >= upgradeCost) {
             cash -= upgradeCost;
-
+            pollution += 1;
             cashText.text = "$"+cash;
             upgradeCost = calculateUpgrade();
             upgradeText.text = "$" + upgradeCost;
