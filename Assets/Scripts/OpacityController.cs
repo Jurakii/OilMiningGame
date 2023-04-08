@@ -10,12 +10,9 @@ public class OpacityController : MonoBehaviour
     public RawImage image;
     public float maxOpacity = 1f;
     public float fadeDuration = 2f;
+    public float fadeDelay = 2f; // added variable for fade-out delay
 
     private float currentOpacity = 0f;
-    private float timeElapsed = 0f;
-    public VideoPlayer videoPlayer;
-    public GameObject videoObj;
-    public int videoLength;
 
     private void Start()
     {
@@ -25,27 +22,45 @@ public class OpacityController : MonoBehaviour
 
     public void Opacity()
     {
-        // Increment the time elapsed since the script started running
-        timeElapsed += Time.deltaTime;
+        // Start the fade-in effect
+        StartCoroutine(FadeToMaxOpacity());
 
-        // Calculate the new opacity based on the elapsed time and fade duration
-        currentOpacity = Mathf.Lerp(0f, maxOpacity, timeElapsed / fadeDuration);
+        // Start the fade-out effect after a delay
+        StartCoroutine(FadeOutAfterDelay());
+    }
 
-        // Update the image's color with the new opacity
-        image.color = new Color(image.color.r, image.color.g, image.color.b, currentOpacity);
-
-        // If the max opacity has been reached, stop updating the image's color
-        if (currentOpacity >= maxOpacity)
+    private IEnumerator FadeToMaxOpacity()
+    {
+        // Loop until the max opacity has been reached
+        while (currentOpacity < maxOpacity)
         {
-            enabled = false;
-            StartCoroutine(Disable());
+            // Calculate the new opacity for this frame
+            currentOpacity += Time.deltaTime / fadeDuration;
+            currentOpacity = Mathf.Clamp01(currentOpacity);
+
+            // Update the image's color with the new opacity
+            image.color = new Color(image.color.r, image.color.g, image.color.b, currentOpacity);
+
+            yield return null;
         }
     }
-    IEnumerator Disable() {
 
-        yield return new WaitForSeconds(videoLength);
-        videoPlayer.Pause();
-        videoObj.SetActive(false);
-        
+    private IEnumerator FadeOutAfterDelay()
+    {
+        // Wait for the fade delay before starting the fade-out effect
+        yield return new WaitForSeconds(fadeDelay);
+
+        // Loop until the opacity has reached 0
+        while (currentOpacity > 0f)
+        {
+            // Calculate the new opacity for this frame
+            currentOpacity -= Time.deltaTime / fadeDuration;
+            currentOpacity = Mathf.Clamp01(currentOpacity);
+
+            // Update the image's color with the new opacity
+            image.color = new Color(image.color.r, image.color.g, image.color.b, currentOpacity);
+
+            yield return null;
+        }
     }
 }

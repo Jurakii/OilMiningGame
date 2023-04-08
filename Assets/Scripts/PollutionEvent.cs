@@ -9,6 +9,7 @@ public class PollutionEvent : MonoBehaviour {
     public class PollutionEventItem {
         public float pollutionLevel;
         public UnityEvent onPollutionLevelReached;
+        public bool hasTriggered;
     }
 
     public PollutionEventItem[] pollutionEvents;
@@ -17,9 +18,12 @@ public class PollutionEvent : MonoBehaviour {
 
     // Reference to the script containing the pollution level variable
     public GameController gameController;
-    
+
     public Camera mainCamera;
     public Color sky1;
+        public Color sky2;
+            public Color sky3;
+                public Color sky4;
 
 
     void Update() {
@@ -27,8 +31,9 @@ public class PollutionEvent : MonoBehaviour {
         currentPollutionLevel = gameController.pollution;
 
         foreach (PollutionEventItem item in pollutionEvents) {
-            if (currentPollutionLevel >= item.pollutionLevel) {
+            if (currentPollutionLevel >= item.pollutionLevel && !item.hasTriggered) {
                 item.onPollutionLevelReached.Invoke();
+                item.hasTriggered = true;
             }
         }
     }
@@ -36,5 +41,14 @@ public class PollutionEvent : MonoBehaviour {
 
     public void swapSky1() {
         mainCamera.backgroundColor = sky1;
+    }
+        public void swapSky2() {
+        mainCamera.backgroundColor = sky2;
+    }
+        public void swapSky3() {
+        mainCamera.backgroundColor = sky3;
+    }
+        public void swapSky4() {
+        mainCamera.backgroundColor = sky4;
     }
 }

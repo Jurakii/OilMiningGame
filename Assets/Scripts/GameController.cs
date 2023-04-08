@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
     public Button sell;
     public int i = 0;
     public float pollution = 0;
+    public TextMeshProUGUI pollutionText;
 
     [Header("Upgrades")]
     public float multi = 1f;
@@ -52,6 +53,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pollutionText.text = "Pollution: " + pollution + "%";
         truckText.text = "" + trucks;
         upgradeText.text = "$"+upgradeCost;
         cashText.text = "$"+cash;
@@ -116,7 +118,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        oil += miningSpeed * Time.deltaTime;
+        oil += (miningSpeed + miningAmount) * Time.deltaTime;
         oilText.text = "Crude Oil: " + Mathf.Round(oil);
             if(!refining) {
                 if(refineryInv >= refineryCapacity) {
@@ -171,7 +173,9 @@ public class GameController : MonoBehaviour
     }
     public void buyTruck() {
         if(cash >= truckCost) {
+            
             pollution += 1;
+            pollutionText.text = "Pollution: " + pollution + "%";
             cash -= truckCost;
             trucks += 1;
             truckText.text = ""+trucks;
@@ -195,6 +199,8 @@ public class GameController : MonoBehaviour
         if(cash >= upgradeCost) {
             cash -= upgradeCost;
             pollution += 1;
+            pollutionText.text = "Pollution: " + pollution + "%";
+            miningAmount += 0.2f;
             cashText.text = "$"+cash;
             upgradeCost = calculateUpgrade();
             upgradeText.text = "$" + upgradeCost;
