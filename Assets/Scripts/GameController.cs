@@ -204,7 +204,7 @@ public class GameController : MonoBehaviour
             cashText.text = "$"+cash;
             upgradeCost = calculateUpgrade();
             upgradeText.text = "$" + upgradeCost;
-            multi += 0.5f;
+            multi += 1f;
             if(truckTravelTime > 0.25f) {
                 truckTravelTime -= 0.25f;
             } else {
@@ -239,10 +239,10 @@ public class GameController : MonoBehaviour
     
 
     public float calculateUpgrade() {
-        return Mathf.Round(upgradeCost*1.2f);
+        return Mathf.Round(upgradeCost*1.1f);
     } 
     public float calculateTruckPrice(){
-        return Mathf.Round(truckCost*1.2f);
+        return Mathf.Round(truckCost*1.1f);
     }
     public float calculatePrice() {
         return Mathf.Round((slider.value)* multi);
