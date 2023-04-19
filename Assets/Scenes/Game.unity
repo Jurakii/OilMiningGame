@@ -243,10 +243,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textElement: {fileID: 13982741}
-  fadeInTime: 2
-  visibleTime: 3
+  fadeInTime: 1
+  visibleTime: 8
   fadeOutTime: 1
-  startDelay: 12
+  startDelay: 20
 --- !u!114 &13982741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1038,13 +1038,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193988402}
-  m_LocalRotation: {x: 0, y: 0, z: -0.043619405, w: 0.9990483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1102346993}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -5}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -4.0999985, y: 0.00001335144}
@@ -1564,7 +1564,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     hasTriggered: 0
-  - pollutionLevel: 85
+  - pollutionLevel: 75
     onPollutionLevelReached:
       m_PersistentCalls:
         m_Calls:
@@ -1755,7 +1755,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     hasTriggered: 0
-  - pollutionLevel: 75
+  - pollutionLevel: 80
     onPollutionLevelReached:
       m_PersistentCalls:
         m_Calls:
@@ -1920,7 +1920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 237870069}
   maxOpacity: 1
-  fadeDuration: 2
+  fadeDuration: 1
   fadeDelay: 12
 --- !u!1 &240536764
 GameObject:
@@ -2239,10 +2239,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textElement: {fileID: 326040545}
-  fadeInTime: 2
-  visibleTime: 3
+  fadeInTime: 1
+  visibleTime: 7
   fadeOutTime: 1
-  startDelay: 7
+  startDelay: 9
 --- !u!114 &326040545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2394,7 +2394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 384496224}
   maxOpacity: 1
-  fadeDuration: 2
+  fadeDuration: 1
   fadeDelay: 6
 --- !u!114 &384496224
 MonoBehaviour:
@@ -7809,9 +7809,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textElement: {fileID: 633711335}
   fadeInTime: 1
-  visibleTime: 6
+  visibleTime: 8
   fadeOutTime: 1
-  startDelay: 1
+  startDelay: 0
 --- !u!114 &633711335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8060,8 +8060,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textElement: {fileID: 640436041}
-  fadeInTime: 2
-  visibleTime: 5
+  fadeInTime: 1
+  visibleTime: 7
   fadeOutTime: 1
   startDelay: 0
 --- !u!1 &736608884
@@ -8210,7 +8210,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -8599,7 +8599,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -8755,9 +8755,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textElement: {fileID: 783881622}
   fadeInTime: 1
-  visibleTime: 3
+  visibleTime: 8
   fadeOutTime: 1
-  startDelay: 6
+  startDelay: 10
 --- !u!114 &783881622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8965,7 +8965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 852231854}
   maxOpacity: 1
-  fadeDuration: 2
+  fadeDuration: 1
   fadeDelay: 12
 --- !u!114 &852231854
 MonoBehaviour:
@@ -9272,9 +9272,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textElement: {fileID: 1048458524}
   fadeInTime: 1
-  visibleTime: 4
+  visibleTime: 8
   fadeOutTime: 1
-  startDelay: 11
+  startDelay: 20
 --- !u!114 &1048458524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9607,7 +9607,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 19.559}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.016, y: 0.417}
+  m_AnchoredPosition: {x: -4.016, y: 0.35}
   m_SizeDelta: {x: 130.76562, y: 39.22969}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1167276018
@@ -10299,7 +10299,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1461969025
 Transform:
   m_ObjectHideFlags: 0
@@ -10430,10 +10430,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textElement: {fileID: 1464699837}
-  fadeInTime: 2
-  visibleTime: 3
+  fadeInTime: 1
+  visibleTime: 8
   fadeOutTime: 1
-  startDelay: 6
+  startDelay: 10
 --- !u!114 &1464699837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10567,7 +10567,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 16.900024, y: -537.34}
+  m_AnchoredPosition: {x: 16.899902, y: -537.3401}
   m_SizeDelta: {x: 75.91678, y: 1186.1987}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1473052966
@@ -11492,9 +11492,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textElement: {fileID: 1770162092}
   fadeInTime: 1
-  visibleTime: 3
+  visibleTime: 8
   fadeOutTime: 1
-  startDelay: 1
+  startDelay: 0
 --- !u!114 &1770162092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11628,7 +11628,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 3.0999756, y: -549.8}
+  m_AnchoredPosition: {x: 3.1000977, y: -549.80005}
   m_SizeDelta: {x: 75.91675, y: 1186.1987}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1788476150
@@ -11718,7 +11718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1793170989}
   maxOpacity: 1
-  fadeDuration: 2
+  fadeDuration: 1
   fadeDelay: 22
 --- !u!114 &1793170989
 MonoBehaviour:
@@ -12204,8 +12204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textElement: {fileID: 1854803660}
-  fadeInTime: 2
-  visibleTime: 3
+  fadeInTime: 1
+  visibleTime: 8
   fadeOutTime: 1
   startDelay: 0
 --- !u!114 &1854803660
@@ -12478,8 +12478,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textElement: {fileID: 1896750295}
-  fadeInTime: 2
-  visibleTime: 5
+  fadeInTime: 1
+  visibleTime: 7
   fadeOutTime: 1
   startDelay: 0
 --- !u!114 &1896750295
@@ -12609,14 +12609,14 @@ RectTransform:
   m_GameObject: {fileID: 1899720392}
   m_LocalRotation: {x: -0, y: -0, z: 0.16985585, w: 0.985469}
   m_LocalPosition: {x: 0, y: 0, z: 1548.0662}
-  m_LocalScale: {x: 0.3240741, y: 0.3240741, z: 0.009259259}
+  m_LocalScale: {x: 0.27, y: 0.27, z: 0.27}
   m_Children: []
   m_Father: {fileID: 1229225227}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 19.559}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.794, y: -0.221}
+  m_AnchoredPosition: {x: -3.794, y: -0.35}
   m_SizeDelta: {x: 4.19, y: 3.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1899720394
@@ -12917,7 +12917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -982.9956, y: -4.169983}
+  m_AnchoredPosition: {x: -982.9956, y: -4.169922}
   m_SizeDelta: {x: 1965.9912, y: 94.72308}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1934810128
@@ -13116,7 +13116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 2074501702}
   maxOpacity: 1
-  fadeDuration: 2
+  fadeDuration: 1
   fadeDelay: 10
 --- !u!114 &2074501702
 MonoBehaviour:
@@ -13235,10 +13235,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textElement: {fileID: 2140894793}
-  fadeInTime: 2
-  visibleTime: 3
+  fadeInTime: 1
+  visibleTime: 7
   fadeOutTime: 1
-  startDelay: 7
+  startDelay: 9
 --- !u!114 &2140894793
 MonoBehaviour:
   m_ObjectHideFlags: 0
