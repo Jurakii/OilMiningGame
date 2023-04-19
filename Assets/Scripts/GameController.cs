@@ -241,7 +241,7 @@ public class GameController : MonoBehaviour
         multi += x;
     }
     public float calculateUpgrade() {
-        return Mathf.Round(upgradeCost*1.15f);
+        return Mathf.Round(upgradeCost*1.2f);
     } 
     public float calculateTruckPrice(){
         return Mathf.Round(truckCost*1.15f);
